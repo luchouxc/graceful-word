@@ -1,0 +1,25 @@
+name = "graceful-word-webhook"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# ── KV NAMESPACE ────────────────────────────────────────────────
+# Stores verified transaction IDs so the confirmation page
+# can check them without trusting the URL parameter alone.
+# Create with: npx wrangler kv:namespace create PAID_TXS
+# Then replace the id below with the one wrangler prints.
+[[kv_namespaces]]
+binding = "PAID_TXS"
+id      = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+
+# ── SECRETS (set via CLI, never in this file) ────────────────────
+# Run these commands once after deploying:
+#
+#   npx wrangler secret put WOMPI_API_SECRET
+#   npx wrangler secret put WOMPI_API_KEY
+#   npx wrangler secret put ALLOWED_ORIGIN
+#
+# WOMPI_API_SECRET  → your API Secret from WOMPI dashboard
+#                     (Desarrollador → Llaves de API → API Secret)
+# WOMPI_API_KEY     → your API Key (public key) — used to call
+#                     the WOMPI transaction lookup endpoint
+# ALLOWED_ORIGIN    → your production URL e.g. https://gracefulword.com

@@ -1,0 +1,128 @@
+.page-glow {
+  position: fixed; z-index: 0;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(107,63,160,0.28) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  filter: blur(80px); pointer-events: none;
+}
+
+.booking-main {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 7rem var(--pad-x) 4rem;
+  gap: 2rem;
+}
+
+.booking-header { text-align: center; max-width: 560px; }
+
+.booking-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+}
+
+.booking-subtitle {
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--text-soft);
+}
+
+/* ── PACKAGE GRID ────────────────────────────────────────────── */
+.pkg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 760px;
+}
+
+/* ── PACKAGE CARD ────────────────────────────────────────────── */
+/* (base styles in globals.css — extends .pkg-card) */
+.pkg-card {
+  text-align: left;
+  font-family: var(--font-sans);
+  color: var(--white);
+  background: rgba(61,31,107,0.22);
+  border: 2px solid rgba(195,164,232,0.12);
+  padding: 2.2rem 1.8rem;
+  cursor: pointer; position: relative;
+  transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+  display: flex; flex-direction: column; gap: 0;
+}
+.pkg-card:hover {
+  border-color: rgba(195,164,232,0.3);
+  transform: translateY(-4px);
+}
+.pkg-card.selected {
+  background: linear-gradient(145deg, rgba(107,63,160,0.45), rgba(61,31,107,0.6));
+  border-color: rgba(195,164,232,0.45);
+  box-shadow: 0 20px 60px rgba(107,63,160,0.28);
+  transform: translateY(-4px);
+}
+
+.badge-popular {
+  position: absolute; top: -0.7rem; left: 50%; transform: translateX(-50%);
+  background: var(--violet); color: var(--white);
+  font-size: 0.52rem; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.22rem 0.9rem; white-space: nowrap;
+}
+
+.pkg-check {
+  position: absolute; top: 1rem; right: 1rem;
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid rgba(195,164,232,0.2);
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(61,31,107,0.3);
+  color: transparent; font-size: 0.62rem;
+  transition: all 0.3s;
+}
+.pkg-check-active {
+  background: var(--violet);
+  border-color: var(--violet);
+  color: var(--white);
+  box-shadow: 0 0 12px rgba(155,109,212,0.5);
+}
+
+.pkg-icon    { font-size: 1.7rem; margin-bottom: 0.9rem; display: block; }
+.pkg-name    { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; color: var(--lav-pale); margin-bottom: 0.2rem; }
+.pkg-sessions{ font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lavender); margin-bottom: 1rem; }
+.pkg-price   { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 500; color: var(--white); line-height: 1; margin-bottom: 0.2rem; }
+.pkg-price sup{ font-size: 0.95rem; color: var(--lavender); vertical-align: super; }
+.pkg-per     { font-size: 0.63rem; color: var(--text-soft); margin-bottom: 0.9rem; }
+
+.pkg-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; }
+.pkg-features li {
+  font-size: 0.8rem; font-weight: 300; color: var(--text-soft);
+  display: flex; align-items: flex-start; gap: 0.45rem;
+}
+.feature-dot { font-size: 0.34rem; color: var(--violet); flex-shrink: 0; margin-top: 0.34rem; }
+
+/* ── SUMMARY ─────────────────────────────────────────────────── */
+.selection-summary {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+  background: rgba(61,31,107,0.25);
+  border: 1px solid rgba(195,164,232,0.14);
+  padding: 0.9rem 1.5rem;
+  width: 100%; max-width: 760px;
+  animation: fadeDown 0.35s ease both;
+}
+.summary-text { font-size: 0.8rem; color: var(--lavender); }
+.summary-text strong { font-family: var(--font-serif); font-size: 0.95rem; color: var(--lav-pale); }
+.summary-price { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 500; color: var(--lavender); flex-shrink: 0; }
+
+/* ── CTA ─────────────────────────────────────────────────────── */
+.booking-cta { text-align: center; width: 100%; max-width: 760px; }
+.cta-note { margin-top: 0.7rem; font-size: 0.7rem; color: var(--text-soft); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .booking-main  { padding: 6rem 1.4rem 3rem; gap: 1.6rem; justify-content: flex-start; padding-top: 5.5rem; }
+  .pkg-grid      { grid-template-columns: 1fr; }
+  .selection-summary { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+}
